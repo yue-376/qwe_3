@@ -8,15 +8,16 @@
 /* ==================== 前向声明 ==================== */
 /* 以下是本文件中定义的各个功能函数的前置声明，让编译器在遇到函数调用时知道它们的存在 */
 static void create_doctor_archive(Database *db, const char *dataDir);   /* 创建医生档案 */
-static void link_archive_to_account(Database *db, const char *dataDir); /* 将档案（患者/医生）关联到用户账号 */
-static void add_archive(Database *db, const char *dataDir);             /* 新增档案（患者或医生） */
-static void delete_archive(Database *db, const char *dataDir);          /* 删除档案（患者或医生） */
-static void edit_archive(Database *db, const char *dataDir);            /* 修改档案（患者或医生） */
+/* 以下函数在 menu_part2.c 中实现 */
+void link_archive_to_account(Database *db, const char *dataDir); /* 将档案（患者/医生）关联到用户账号 */
+void add_archive(Database *db, const char *dataDir);             /* 新增档案（患者或医生） */
+void delete_archive(Database *db, const char *dataDir);          /* 删除档案（患者或医生） */
+void edit_archive(Database *db, const char *dataDir);            /* 修改档案（患者或医生） */
 static void delete_doctor(Database *db, const char *dataDir);           /* 删除医生档案 */
-static void edit_patient(Database *db, const char *dataDir);            /* 修改患者档案 */
+void edit_patient(Database *db, const char *dataDir);            /* 修改患者档案 */
 static void edit_doctor(Database *db, const char *dataDir);             /* 修改医生档案 */
-static void add_patient(Database *db, const char *dataDir);             /* 新增患者档案 */
-static void delete_patient(Database *db, const char *dataDir);          /* 删除患者档案 */
+void add_patient(Database *db, const char *dataDir);             /* 新增患者档案 */
+void delete_patient(Database *db, const char *dataDir);          /* 删除患者档案 */
 static void exam_management_menu(Database *db, const char *dataDir);    /* 检查记录管理子菜单 */
 static void visit_management_menu(Database *db, const char *dataDir);   /* 看诊记录管理子菜单 */
 static void edit_visit(Database *db, const char *dataDir);              /* 修改看诊记录 */
@@ -1177,7 +1178,7 @@ static int patient_has_related_records(Database *db, int patientId) {
  * 3. 检查是否有关联记录（挂号/检查/住院）
  * 4. 确认后删除并保存数据
  */
-static void delete_patient(Database *db, const char *dataDir) {
+void delete_patient(Database *db, const char *dataDir) {
     int id = read_int("要删除的患者病历号(输入0返回): ", 0, 1000000);
     Patient *prev = NULL;
     Patient *cur = db->patients;
@@ -1225,7 +1226,7 @@ static void delete_patient(Database *db, const char *dataDir) {
  * 4. 每步都支持返回上一步
  * 5. 添加到链表并保存数据
  */
-static void add_patient(Database *db, const char *dataDir) {
+void add_patient(Database *db, const char *dataDir) {
     Patient *p = (Patient*)malloc(sizeof(Patient));
     int step = 0;
     p->id = next_patient_id(db);

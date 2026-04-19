@@ -7,12 +7,13 @@
 
 /* ==================== 前向声明 ==================== */
 static void create_doctor_archive(Database *db, const char *dataDir);
-static void link_archive_to_account(Database *db, const char *dataDir);
-static void add_archive(Database *db, const char *dataDir);
-static void delete_archive(Database *db, const char *dataDir);
-static void edit_archive(Database *db, const char *dataDir);
+/* 以下函数在 menu_part1.c 中实现 */
+void link_archive_to_account(Database *db, const char *dataDir);
+void add_archive(Database *db, const char *dataDir);
+void delete_archive(Database *db, const char *dataDir);
+void edit_archive(Database *db, const char *dataDir);
 static void delete_doctor(Database *db, const char *dataDir);
-static void edit_patient(Database *db, const char *dataDir);
+void edit_patient(Database *db, const char *dataDir);
 static void edit_doctor(Database *db, const char *dataDir);
 
 /* ==================== 用户账号管理菜单 ==================== */
@@ -237,7 +238,7 @@ static void create_doctor_archive(Database *db, const char *dataDir) {
  * 参数：db 数据库指针
  * 参数：dataDir 数据文件目录
  */
-static void link_archive_to_account(Database *db, const char *dataDir) {
+void link_archive_to_account(Database *db, const char *dataDir) {
     char username[32];
     int targetId;
     printf("\n--- 关联档案到账号 ---\n");
@@ -327,7 +328,7 @@ static void link_archive_to_account(Database *db, const char *dataDir) {
  * 参数：db 数据库指针
  * 参数：dataDir 数据文件目录
  */
-static void add_archive(Database *db, const char *dataDir) {
+void add_archive(Database *db, const char *dataDir) {
     int choice;
     printf("\n--- 新增档案 ---\n");
     printf("1. 新增患者档案\n");
@@ -345,7 +346,7 @@ static void add_archive(Database *db, const char *dataDir) {
  * 参数：db 数据库指针
  * 参数：dataDir 数据文件目录
  */
-static void delete_archive(Database *db, const char *dataDir) {
+void delete_archive(Database *db, const char *dataDir) {
     int choice;
     printf("\n--- 删除档案 ---\n");
     printf("1. 删除患者档案\n");
@@ -363,7 +364,7 @@ static void delete_archive(Database *db, const char *dataDir) {
  * 参数：db 数据库指针
  * 参数：dataDir 数据文件目录
  */
-static void edit_archive(Database *db, const char *dataDir) {
+void edit_archive(Database *db, const char *dataDir) {
     int choice;
     printf("\n--- 修改档案 ---\n");
     printf("1. 修改患者档案\n");
@@ -430,7 +431,7 @@ static void delete_doctor(Database *db, const char *dataDir) {
  * 参数：db 数据库指针
  * 参数：dataDir 数据文件目录
  */
-static void edit_patient(Database *db, const char *dataDir) {
+void edit_patient(Database *db, const char *dataDir) {
     int id = read_int("请输入要修改的患者病历号 (输入 0 返回): ", 0, 1000000);
     Patient *p;
     char newName[NAME_LEN], newGender[16], newBirth[DATE_LEN], newPhone[PHONE_LEN], newInsurance[SMALL_LEN];
