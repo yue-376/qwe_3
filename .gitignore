@@ -3,12 +3,43 @@
 *.o
 *.obj
 *.out
+
 # Dependencies
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+.env
+.env.local
+.env.*
+
 # Logs and temp files
 *.log
 *.tmp
 *.swp
+*.swo
+
 # Editors
 .vscode/
 .idea/
+
+# Coverage reports
+.coverage
+coverage/
+htmlcov/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Original rules preserved
 ```

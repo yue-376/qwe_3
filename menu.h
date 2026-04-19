@@ -123,4 +123,20 @@ void user_account_management_menu(Database *db, const char *dataDir);
  */
 void archive_management_menu(Database *db, const char *dataDir);
 
+/* ==================== 患者档案操作函数 ==================== */
+
+/*
+ * 说明：新增患者档案
+ * 参数：db 数据库指针
+ * 参数：dataDir 数据文件存储目录
+ */
+void add_patient(Database *db, const char *dataDir);
+
+/*
+ * 说明：删除患者档案
+ * 参数：db 数据库指针
+ * 参数：dataDir 数据文件存储目录
+ */
+void delete_patient(Database *db, const char *dataDir);
+
 #endif

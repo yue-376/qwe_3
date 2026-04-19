@@ -7,12 +7,14 @@
 
 /* ==================== 前向声明 ==================== */
 static void create_doctor_archive(Database *db, const char *dataDir);
-/* 以下函数在 menu_part1.c 中实现 */
+static void delete_doctor(Database *db, const char *dataDir);
+/* 以下函数在 menu_part1.c 中实现，已在 menu.h 中声明 */
+/* void add_patient(Database *db, const char *dataDir); */
+/* void delete_patient(Database *db, const char *dataDir); */
 void link_archive_to_account(Database *db, const char *dataDir);
 void add_archive(Database *db, const char *dataDir);
 void delete_archive(Database *db, const char *dataDir);
 void edit_archive(Database *db, const char *dataDir);
-static void delete_doctor(Database *db, const char *dataDir);
 void edit_patient(Database *db, const char *dataDir);
 static void edit_doctor(Database *db, const char *dataDir);
 
