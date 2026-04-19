@@ -1,3 +1,20 @@
+#include "menu.h"
+#include "data.h"
+#include "auth.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+/* ==================== 前向声明 ==================== */
+static void create_doctor_archive(Database *db, const char *dataDir);
+static void link_archive_to_account(Database *db, const char *dataDir);
+static void add_archive(Database *db, const char *dataDir);
+static void delete_archive(Database *db, const char *dataDir);
+static void edit_archive(Database *db, const char *dataDir);
+static void delete_doctor(Database *db, const char *dataDir);
+static void edit_patient(Database *db, const char *dataDir);
+static void edit_doctor(Database *db, const char *dataDir);
+
 /* ==================== 用户账号管理菜单 ==================== */
 void user_account_management_menu(Database *db, const char *dataDir)
 {
