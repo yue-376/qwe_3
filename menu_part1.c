@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "data.h"
 #include "auth.h"
+#include "report.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -2368,9 +2369,7 @@ void main_menu(Database *db, const char *dataDir) {
         printf("4. 检查管理\n");
         printf("5. 住院管理\n");
         printf("6. 药品管理\n");
-        printf("7. 患者视角查询\n");
-        printf("8. 医护视角查询\n");
-        printf("9. 管理视角报表\n");
+        printf("7. 报表统计查询\n");
         printf("0. 保存并退出\n");
         printf("A. 导入数据文件\n");
         printf("请选择：");
@@ -2419,9 +2418,7 @@ void main_menu(Database *db, const char *dataDir) {
             case 4: exam_management_menu(db, dataDir); break;
             case 5: inpatient_management_menu(db, dataDir); break;
             case 6: drug_management_menu(db, dataDir); break;
-            case 7: patient_report(db); pause_and_wait(); break;
-            case 8: doctor_report(db); pause_and_wait(); break;
-            case 9: management_report(db); pause_and_wait(); break;
+            case 7: report_menu(db); break;
             case 0: save_all(db, dataDir); printf("数据已保存。\n"); return;
         }
     }
